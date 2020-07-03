@@ -1,0 +1,25 @@
+<h3>Category: <%= @picture.category.category %></h3>
+<h3><%= @picture.title %></h3>
+<div class="image-container">
+<%= image_tag @picture.image if @picture.image.attached? %>
+</div>
+
+<%= link_to "Edit", edit_picture_path(@picture.id) %>
+<%= link_to "Delete", picture_path(@picture.id), method: :delete %>
+<%= link_to "Back", pictures_path %>
+
+
+<script src="https://unpkg.com/fast-average-color/dist/index.min.js"></script>
+<script>
+    const fac = new FastAverageColor(),
+        container = document.querySelector('.image-container');
+
+    fac.getColorAsync(container.querySelector('img'))
+        .then(function(color) {
+            container.style.backgroundColor = color.rgba;
+            container.style.color = color.isDark ? '#fff' : '#000';
+        })
+        .catch(function(e) {
+            console.log(e);
+        });
+</script>

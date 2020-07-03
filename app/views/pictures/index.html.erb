@@ -1,0 +1,14 @@
+<div class="image-container">
+  <div class="row">
+    <% @pictures.each do |picture| %>
+      <div class="col-md-6 col-lg-4">
+        <div class="card border-0 transform-on-hover">
+        <div class="card-body">
+          <h3><%= link_to picture.title, picture_path(picture.id) %></h3>
+          <%= image_tag picture.image if picture.image.attached? %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

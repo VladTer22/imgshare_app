@@ -1,0 +1,9 @@
+<%= form_for @picture do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.select :category_id, Category.all.map {|category| [category.category, category.id]} %>
+  <span class="image">
+    <%= f.file_field :image %>
+  </span>
+  <%= f.submit %>
+<% end %>
